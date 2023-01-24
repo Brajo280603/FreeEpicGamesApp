@@ -44,20 +44,20 @@ function createPage (current,next){
 
     });
 
-    // next.forEach(el => {
-    //   // console.log(el);
-    //   nextCards  += `<div style="margin:1rem;padding: 1rem;" >
-    //   <div class="card" style="width: 18rem;">
-    //     <img class="card-img-top" src="${el.keyImages[2].url}" alt="currentGame">
-    //     <div class="card-body">
-    //       <h5 class="card-title">${el.title}</h5>
-    //       <p class="card-text">${el.description}</p>
-    //       <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-    //     </div>
-    //   </div>
-    // </div>`
+    next.forEach(el => {
+      // console.log(el);
+      nextCards  += `<div style="margin:1rem;padding: 1rem;" >
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${el.keyImages[2].url}" alt="currentGame">
+        <div class="card-body">
+          <h5 class="card-title">${el.title}</h5>
+          <p class="card-text">${el.description}</p>
+          <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+        </div>
+      </div>
+    </div>`
 
-    // });
+    });
 
 
     let data = `
@@ -88,7 +88,7 @@ function createPage (current,next){
       <div>
         <h4>nexts:</h4>
         <div>
-          ${nextCards}
+           <!--${nextCards}-->
         </div>
       </div>
     </body>
