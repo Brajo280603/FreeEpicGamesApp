@@ -100,7 +100,7 @@ function createPage (current,next){
       if (err)
         console.log(err);
       else {
-        console.log("Page created successfully\n");
+        console.log("Page created successfully!\n");
       }
     });
 
