@@ -46,6 +46,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: ls -a
+    - run: cat ./index.html
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Upload artifact
@@ -53,6 +54,7 @@ jobs:
       with:
           # Upload entire repository
         path: '.'
+    - run: cat ./index.html
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v1
