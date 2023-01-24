@@ -88,7 +88,7 @@ function createPage (current,next){
       <div>
         <h4>nexts:</h4>
         <div>
-           <!--${nextCards}-->
+           ${nextCards}
         </div>
       </div>
     </body>
