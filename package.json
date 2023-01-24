@@ -2,6 +2,28 @@
   "dependencies": {
     "bootstrap": "^5.3.0-alpha1",
     "browserify": "^17.0.0",
+    "cors": "^2.8.5",
     "epic-free-games": "^3.1.1"
-  }
+  },
+  "name": "freeepicgamesapp",
+  "version": "1.0.0",
+  "main": "bundle.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node script.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brajo280603/FreeEpicGamesApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brajo280603/FreeEpicGamesApp/issues"
+  },
+  "homepage": "https://github.com/Brajo280603/FreeEpicGamesApp#readme",
+  "description": ""
 }
