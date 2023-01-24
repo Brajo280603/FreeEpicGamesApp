@@ -104,9 +104,21 @@ function createPage (current,next){
       }
     });
 
+   
+
 }
 
 
 
 
 
+
+
+fs.writeFile("./checkforworkflow.js","checkingjust",(err) => {
+  if (err)
+    console.log(err);
+  else {
+    console.log("workflowcheck\n");
+  }
+}
+);
