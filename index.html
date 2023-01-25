@@ -34,7 +34,15 @@
             flex-direction:column;
           }
         }
-        
+        .removeBtnStyle{
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+        }
 
         </style>
         <link rel="manifest" href="/manifest.json">
@@ -47,6 +55,10 @@
             <a class="navbar-brand" href="#">
             <img src="./img/maskable_icon_x384.png" alt="Free Games" width="50" height="50">
             </a>
+
+            <button id="downloadBtn" class="navbar-right removeBtnStyle" onclick="triggerInstall()" style="display: none;">
+              <img src="./img/download.png" alt="download" width="30" height="30" style="filter: invert(1);">
+            </button>
           </div>
         </nav>
       <div style="margin:1rem">
