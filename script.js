@@ -117,7 +117,7 @@ function createPage (current,next){
         }
 
         </style>
-        <link rel="manifest" href="/manifest.json">
+        <link rel="manifest" href="./manifest.json">
         <link rel="apple-touch-icon" href="img/apple_touch_icon.png">
         <meta name="theme-color" content="#212529"/>
       </head>
