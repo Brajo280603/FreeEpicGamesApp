@@ -45,6 +45,17 @@
         "purpose": "any maskable"
       }
     ],
+    
+    "shortcuts": [
+    {
+      "name": "Go to Epic Games Store",
+      "short_name": "toEGS",
+      "description": "go to epic games store",
+      "url": "https://store.epicgames.com/en-US/",
+      "icons": [{ "src": "./img/arrow-right.png", "sizes": "192x192" }]
+    },
+  ],
+    
     "id": "index.html",
     "start_url": "./index.html",
     "background_color": "#343a40",
