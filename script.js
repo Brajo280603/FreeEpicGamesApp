@@ -37,12 +37,12 @@ function createPage (current,next){
       // console.log(el);
       currentCards  += 
       `<div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;">
+      <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el.keyImages[2].url}" alt="currentGame">
-        <div class="card-body">
+        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
           <p class="card-text text-light gameDesc">${el.description}</p>
-          <a href="https://store.epicgames.com/en-US/p/${el.offerMappings[0].pageSlug}" class="btn btn-primary">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a href="https://store.epicgames.com/en-US/p/${el.offerMappings[0].pageSlug}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
@@ -56,12 +56,12 @@ function createPage (current,next){
     next.forEach(el => {
       // console.log(el);
       nextCards  += `<div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;">
+      <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el.keyImages[2].url}" alt="currentGame">
-        <div class="card-body">
+        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
           <p class="card-text text-light gameDesc">${el.description}</p>
-          <a href="https://store.epicgames.com/en-US/p/${el.offerMappings[0].pageSlug}" class="btn btn-primary">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a href="https://store.epicgames.com/en-US/p/${el.offerMappings[0].pageSlug}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
@@ -90,7 +90,28 @@ function createPage (current,next){
           font-weight: 300;
         }
 
+        @media (min-width: 718px) {
+          .gameCards{
+            display:flex;
+            justify-content: evenly;
+            align-items:stretch;
+          }
+        }
+
+        @media (max-width: 718px){
+          .gameCards{
+            display:flex;
+            justify-content: evenly;
+            align-items:center;
+            flex-direction:column;
+          }
+        }
+        
+
         </style>
+        <link rel="manifest" href="/manifest.json">
+        <link rel="apple-touch-icon" href="img/apple_touch_icon.png">
+        <meta name="theme-color" content="#212529"/>
       </head>
       <body>
         <nav class="navbar bg-dark text-bg-dark ">
@@ -103,12 +124,15 @@ function createPage (current,next){
       <div style="margin:1rem">
         <div>
         <h2>Current Free Game</h2>
-
-        ${currentCards}
+          <div class="gameCards">
+            ${currentCards}
+          </div>
         </div>
         <div>
         <h2>Upcoming Free Game</h2>
-        ${nextCards}   
+        <div class="gameCards">
+          ${nextCards}   
+        </div>
         </div>
 
       
@@ -117,7 +141,7 @@ function createPage (current,next){
         
       </div>
       </body>
-      <!-- <script src="bundle.js"></script> -->
+      <script src="offline.js"></script>
       </html>`
     
 
