@@ -5,7 +5,7 @@ name: Update and Deploy Pages
 
 on:
   schedule:
-    - cron: "0 15 * * *"
+    - cron: "1 16 * * *"
   push:
     branches: [ "main" ]
   pull_request:
