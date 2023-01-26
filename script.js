@@ -32,9 +32,17 @@ function createPage (current,next){
     let currentCards = '';
     let nextCards = '';
     // console.log(current,next);
-
+console.log(` msg before current`);
     current.forEach(el => {
       // console.log(el);
+
+        let url = "";
+      if (el.offerMappings.length != 0) {
+        url = el.offerMappings[0].pageSlug ;
+      }else if (el.productSlug != null){
+        url = el.productSlug;
+        }
+      
       currentCards  += 
       `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
@@ -42,7 +50,7 @@ function createPage (current,next){
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
           <p class="card-text text-light gameDesc">${el.description}</p>
-          <a href="https://store.epicgames.com/en-US/p/${el.offerMappings[0].pageSlug}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
@@ -52,22 +60,29 @@ function createPage (current,next){
       
 
     });
-
+  console.log(` msg after current`);
     next.forEach(el => {
-      // console.log(el);
+      //console.log(el);
+      let url = "";
+      if (el.offerMappings.length != 0) {
+        url = el.offerMappings[0].pageSlug ;
+      }else if (el.productSlug != null){
+        url = el.productSlug;
+        }
+      
       nextCards  += `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el.keyImages[2].url}" alt="currentGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
           <p class="card-text text-light gameDesc">${el.description}</p>
-          <a href="https://store.epicgames.com/en-US/p/${el.offerMappings[0].pageSlug}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
 
     });
-
+console.log(`message`);
 
     let data = 
     `<!DOCTYPE html>
