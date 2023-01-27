@@ -46,3 +46,49 @@ function triggerInstall (){
   deferredPrompt.prompt();
   console.log("event triggered");
 }
+
+
+// function notifyMe() {
+//   if (!("Notification" in window)) {
+//     // Check if the browser supports notifications
+//     alert("This browser does not support desktop notification");
+//   } else if (Notification.permission === "granted") {
+//     // Check whether notification permissions have already been granted;
+//     // if so, create a notification
+//     const notification = new Notification("Hi there!");
+//     // …
+//   } else if (Notification.permission !== "denied") {
+//     // We need to ask the user for permission
+//     Notification.requestPermission().then((permission) => {
+//       // If the user accepts, let's create a notification
+//       if (permission === "granted") {
+//         const notification = new Notification("Hi there!");
+//         // …
+//       }
+//     });
+//   }
+
+//   // At last, if the user has denied notifications, and you
+//   // want to be respectful there is no need to bother them anymore.
+// }
+
+
+
+let isInstalled = localStorage.getItem('pwaInstalled') === '1' || false;
+
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    // User is currently navigating on the PWA so yes it's installed
+    localStorage.setItem('pwaInstalled', '1');
+    isInstalled = true;
+} else {
+    //User is navigating in browser
+    window.addEventListener('beforeinstallprompt', () => {
+        localStorage.setItem('pwaInstalled', '0');
+        isInstalled = false;
+        //User can get an installation prompt meaning the app is not installed
+    });
+    window.addEventListener('onappinstalled', () => {
+        localStorage.setItem('pwaInstalled', '1');
+        isInstalled = true;
+    });
+}
