@@ -146,7 +146,7 @@ console.log(`message`);
             <button id="downloadBtn" class="navbar-right removeBtnStyle" onclick="triggerInstall()" style="display: none;">
               <img src="./img/download.png" alt="download" width="30" height="30" style="filter: invert(1);">
             </button>
-            <button onclick="notifyMe()">notification</button>
+            <!--<button onclick="notifyMe()">notification</button>-->
           </div>
         </nav>
       <div style="margin:1rem">
