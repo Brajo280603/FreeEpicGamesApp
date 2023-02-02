@@ -50,7 +50,7 @@ console.log(` msg before current`);
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
           <p class="card-text text-light gameDesc">${el.description}</p>
-          <a href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a target="_blank" href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
@@ -76,7 +76,7 @@ console.log(` msg before current`);
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
           <p class="card-text text-light gameDesc">${el.description}</p>
-          <a href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a target="_blank" href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
