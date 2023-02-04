@@ -1,7 +1,7 @@
 
 # FreeEpicGamesApp
 
-It is a webApp(currently website) that shows currently available free games on EPICGAMESSTORE , because epic decided to not show them on their homepage 
+It is a webApp that shows currently available free games on EPICGAMESSTORE , because epic decided to not show them on their homepage 
 
 
 
