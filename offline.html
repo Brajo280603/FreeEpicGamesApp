@@ -45,7 +45,13 @@
         }
 
         .offline_text{
-          font-family:'Courier New', Courier, monospace;font-size: large;font-weight: 700;transform: translateY(-300%);
+          font-family:'Courier New', Courier, monospace;font-size: 18px;font-weight: 700;transform: translateY(-300%);
+        }
+        
+        @media (max-width:450px) {
+          .offline_text{
+          font-size: 11px;
+        }
         }
 
         .offline_text span{
@@ -158,7 +164,7 @@
 
         <div style="height: 100vh;width: 100vw; overflow: hidden; display: flex; flex-direction: column; justify-content: center;align-items: center;">
           <img src="/img/dino-nobg.png" alt="" style="height: 30vh;filter: invert(1);transform: translateY(-50%);">
-          <p class="offline_text" >
+          <p class="offline_text" style="max-width: 100vw;">
             <span>U</span>
             <span>h</span>
             <span> </span>
