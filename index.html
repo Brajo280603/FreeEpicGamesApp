@@ -44,12 +44,103 @@
           outline: inherit;
         }
 
+        .offline_text{
+          font-family:'Courier New', Courier, monospace;font-size: large;font-weight: 700;transform: translateY(-300%);
+        }
+
+        .offline_text span{
+          display: inline-block;
+          animation: infinite wave 1s ease-in-out ;
+        }
+
+        .offline_text span:nth-child(1){
+          animation-delay: 0ms;
+        }
+        .offline_text span:nth-child(2){
+          animation-delay: 100ms;
+        }
+        .offline_text span:nth-child(3){
+          animation-delay: 200ms;
+        }
+        .offline_text span:nth-child(4){
+          animation-delay: 300ms;
+        }
+        .offline_text span:nth-child(5){
+          animation-delay: 400ms;
+        }
+        .offline_text span:nth-child(6){
+          animation-delay: 500ms;
+        }
+        .offline_text span:nth-child(7){
+          animation-delay: 600ms;
+        }
+        .offline_text span:nth-child(8){
+          animation-delay: 700ms;
+        }
+        .offline_text span:nth-child(9){
+          animation-delay: 800ms;
+        }
+        .offline_text span:nth-child(10){
+          animation-delay: 900ms;
+        }
+        .offline_text span:nth-child(11){
+          animation-delay: 1000ms;
+        }
+        .offline_text span:nth-child(12){
+          animation-delay: 1100ms;
+        }
+        .offline_text span:nth-child(13){
+          animation-delay: 1200ms;
+        }
+        .offline_text span:nth-child(14){
+          animation-delay: 1300ms;
+        }
+        .offline_text span:nth-child(15){
+          animation-delay: 1400ms;
+        }
+        .offline_text span:nth-child(16){
+          animation-delay: 1500ms;
+        }
+        .offline_text span:nth-child(17){
+          animation-delay: 1600ms;
+        }
+        .offline_text span:nth-child(18){
+          animation-delay: 1700ms;
+        }
+        .offline_text span:nth-child(19){
+          animation-delay: 1800ms;
+        }
+        .offline_text span:nth-child(20){
+          animation-delay: 1900ms;
+        }
+        .offline_text span:nth-child(21){
+          animation-delay: 2000ms;
+        }
+        .offline_text span:nth-child(22){
+          animation-delay: 2100ms;
+        }
+        .offline_text span:nth-child(23){
+          animation-delay: 2200ms;
+        }
+
+        @keyframes wave {
+          0%{
+            transform: translateY(0rem);
+          }
+          60%{
+            transform:translateY(0.6rem);
+          }
+          100%{
+            transform: translateY(0rem);
+          }
+        }
+
         </style>
         <link rel="manifest" href="./manifest.json">
         <link rel="apple-touch-icon" href="img/apple_touch_icon.png">
         <meta name="theme-color" content="#212529"/>
       </head>
-      <body>
+      <body style="overflow:hidden">
         <nav class="navbar bg-dark text-bg-dark ">
           <div class="container">
             <a class="navbar-brand" href="#">
@@ -62,58 +153,36 @@
             
           </div>
         </nav>
-      <div style="margin:1rem">
-        <div>
-        <h2>Current Free Game</h2>
-          <div class="gameCards">
-            <div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/spt/0e7cbbb0-a281-4c00-8538-7eb946666d84/download-adios-offer-3bab1685.jpg" alt="currentGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">Adios</h5>
-          <p class="card-text text-light gameDesc">A pig farmer decides he no longer wants to dispose of bodies for the mob. What follows is a discussion between him and his would-be killer.</p>
-          <a href="https://store.epicgames.com/en-US/p/adios-b378b4" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-        </div>
-      </div>
-    </div><div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/spt-assets/0de2d0d8870f457eaf7c6bf8c64f7f9e/hell-is-others-1ra3i.jpg" alt="currentGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">Hell is Others</h5>
-          <p class="card-text text-light gameDesc">Hell is Others is an extraction horror PVPVE top-down shooter. Outside the safety of your apartment lies the noir hellscape of Century City. A city of endless night that straddles the line between reality and insanity. Explore, hunt and loot in a place where blood is currency.</p>
-          <a href="https://store.epicgames.com/en-US/p/hell-is-others-789262" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-        </div>
-      </div>
-    </div>
-          </div>
-        </div>
-        <div>
-        <h2>Upcoming Free Game</h2>
-        <div class="gameCards">
-          <div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/spt-assets/148df842b2b14082be6b004f59a2765b/download-city-of-gangsters-offer-5jbgv.jpg" alt="currentGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">City of Gangsters</h5>
-          <p class="card-text text-light gameDesc">In this management tycoon game, you’ll start a criminal operation from nothing and grow it into a well-oiled money machine! Build speakeasies and illegal distilleries. Leverage favors, chase down debtors, and bribe the police to look the other way.</p>
-          <a href="https://store.epicgames.com/en-US/p/city-of-gangsters-6c2974" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-        </div>
-      </div>
-    </div><div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/offer/87c84bc5f43d4fe69ad8f3ccde0594b0/EGS_DishonoredDeathoftheOutsider_ArkaneStudios_S2_1200x1600-acb1abddb047a40709f270fa623f1f02" alt="currentGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">Dishonored®: Death of the Outsider™</h5>
-          <p class="card-text text-light gameDesc">Take on the role of Billie Lurk as she reunites with her old mentor, Daud, to undertake the greatest assassination ever conceived: killing the Outsider, a god-like figure whom they both see as instrumental to some of the Empire's most dishonorable moments. </p>
-          <a href="https://store.epicgames.com/en-US/p/dishonored-death-of-the-outsider" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-        </div>
-      </div>
-    </div>   
-        </div>
-        </div>
+      <div style="margin:1rem; overflow: hidden;">
+       
 
-      
-
+        <div style="height: 100vh;width: 100vw; overflow: hidden; display: flex; flex-direction: column; justify-content: center;align-items: center;">
+          <img src="/img/dino-nobg.png" alt="" style="height: 30vh;filter: invert(1);transform: translateY(-50%);">
+          <p class="offline_text" >
+            <span>U</span>
+            <span>h</span>
+            <span> </span>
+            <span>O</span>
+            <span>h</span>
+            <span>!</span>
+            <span> </span>
+            <span>Y</span>
+            <span>o</span>
+            <span>u</span>
+            <span> </span>
+            <span>A</span>
+            <span>r</span>
+            <span>e</span>
+            <span> </span>
+            <span>O</span>
+            <span>f</span>
+            <span>f</span>
+            <span>l</span>
+            <span>i</span>
+            <span>n</span>
+            <span>e</span>
+          </p>
+        </div>
 
         
       </div>
