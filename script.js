@@ -12,7 +12,7 @@ let images = []
 getGames("IN", true).then(res => {
   // Do something
   // console.log(res.currentGames);
-  // console.log(res);
+  console.log(res);
   currents = res.currentGames;
   nexts = res.nextGames;
 
@@ -62,7 +62,7 @@ console.log(` msg before current`);
     });
   console.log(` msg after current`);
     next.forEach(el => {
-      //console.log(el);
+      console.log(el);
       let url = "";
       if (el.offerMappings.length != 0) {
         url = el.offerMappings[0].pageSlug ;
