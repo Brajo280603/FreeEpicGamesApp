@@ -1,56 +1,148 @@
-const { getGames } = require("epic-free-games");
+let gamesData = []
 const fs = require('fs');
-
 let fileName = './index.html';
 
 let currents = [] ;
 let nexts = [];
-let images = []
+
+getGames();
+
+async function getGames(){
+    let res = fetch("https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions")
+    res = (await res).json();
+    
+    res = await res;
+    res.data.Catalog.searchStore.elements.forEach(el => {
+        gamesData.push(el);
+    })
+
+    // console.log(res);
+    let gamesInfo = []
+
+// console.log(gamesData);
+
+gamesData.forEach(el => {
+    let date;
+    let isaval;
+    if(el.promotions.upcomingPromotionalOffers.length){
+        date = el.promotions.upcomingPromotionalOffers;
+        isaval = false;
+    }else if(el.promotions.promotionalOffers.length){
+        date = el.promotions.promotionalOffers;
+        isaval = true;
+    }
+    date = date[0].promotionalOffers[0];
 
 
 
-getGames("IN", true).then(res => {
-  // Do something
-  // console.log(res.currentGames);
-  // console.log(res);
-  currents = res.currentGames;
-  nexts = res.nextGames;
+    let img;
+    el.keyImages.forEach(el => {
+        if(el.type == "Thumbnail"){
+            img = el.url;
+        }})
+    console.log(img);
 
-  // nexts.forEach(el=>{
-  //   console.log(el.offerMappings[0].pageSlug)
-  // })
+    
+    el.keyImages.forEach(el=>{
+        if(!img){
+            if(el.type == "VaultClosed"){
+                img = el.url;
+            }
+        }
+    })
+    
+
+    let game = {
+
+        "name":el.title,
+        "desc":el.description,
+        "link":el.productSlug?el.productSlug:"",
+        "start_date": new Date(date.startDate),
+        "end_date": new Date(date.endDate),
+        "is_available": isaval,
+        "img": img
+    }
+
+    gamesInfo.push(game);
+
+
+})
+
+// console.log(gamesInfo);
+
+gamesInfo.forEach(el=>{
+    if(el.is_available){
+        currents.push(el);
+    }else{
+        nexts.push(el)
+    }
+})
+
+console.log(currents,nexts);
+
+let currentStartDate = currents[0].start_date.toLocaleString();
+let currentEndDate = currents[0].end_date.toLocaleString();
+let nextStartDate = nexts[0].start_date.toLocaleString();
+let nextEndDate = nexts[0].end_date.toLocaleString();
+
+createPage(currents,nexts,currentStartDate,currentEndDate,nextStartDate,nextEndDate);
+}
+
+
+// .then((data) => data.data.Catalog.searchStore.elements.forEach(el=>console.log(el.title)));
+
+// console.log(gamesData);
+
+
+// const { getGames } = require("epic-free-games");
+
+
+
+
+
+
+// getGames("IN", true).then(res => {
+//   // Do something
+//   // console.log(res.currentGames);
+//   // console.log(res);
+//   currents = res.currentGames;
+//   nexts = res.nextGames;
+
+//   // nexts.forEach(el=>{
+//   //   console.log(el.offerMappings[0].pageSlug)
+//   // })
   
-  createPage(currents,nexts);
+//   createPage(currents,nexts);
 
 
-  // console.log(res.nextGames);
-}).catch(err => {
-  // Do something
-});
+//   // console.log(res.nextGames);
+// }).catch(err => {
+//   // Do something
+// });
 
-function createPage (current,next){
+
+
+function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,nextEndDate){
     let currentCards = '';
     let nextCards = '';
     // console.log(current,next);
-console.log(` msg before current`);
+    console.log(` msg before current`);
     current.forEach(el => {
       // console.log(el);
 
-        let url = "";
-      if (el.offerMappings.length != 0) {
-        url = el.offerMappings[0].pageSlug ;
-      }else if (el.productSlug != null){
-        url = el.productSlug;
-        }
+   
       
       currentCards  += 
       `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="${el.keyImages[2].url}" alt="currentGame">
+        <img class="card-img-top gameImage" src="${el.img}" alt="currentGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
-          <p class="card-text text-light gameDesc">${el.description}</p>
-          <a target="_blank" href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <h5 class="card-title text-light fw-bold gameTitle">${el.name}</h5>
+          <p class="card-text text-light gameDesc">${el.desc}</p>
+
+          
+
+          <a target="_blank" href="https://store.epicgames.com/en-US/p/${el.link}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
@@ -63,20 +155,20 @@ console.log(` msg before current`);
   console.log(` msg after current`);
     next.forEach(el => {
       // console.log(el);
-      let url = "";
-      if (el.offerMappings.length != 0) {
-        url = el.offerMappings[0].pageSlug ;
-      }else if (el.productSlug != null){
-        url = el.productSlug;
-        }
+
+      let date = el.start_date.toISOString()
+
+        
+    //   <a target="_blank" href="https://store.epicgames.com/en-US/p/${el.link}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
       
       nextCards  += `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="${el.keyImages[2].url}" alt="currentGame">
+        <img class="card-img-top gameImage" src="${el.img}" alt="nextGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">${el.title}</h5>
-          <p class="card-text text-light gameDesc">${el.description}</p>
-          <a target="_blank" href="https://store.epicgames.com/en-US/p/${url}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <h5 class="card-title text-light fw-bold gameTitle">${el.name}</h5>
+          <p class="card-text text-light gameDesc">${el.desc}</p>
+          <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
+          <p class="hidethis">${date}</p>
         </div>
       </div>
     </div>`
@@ -98,6 +190,11 @@ console.log(`message`);
         <style>
         html,body{
           background-color: #343a40; color:lightgrey;
+        }
+
+        h6{
+            font-size: 0.9rem;
+            font-weight: 300;
         }
         
         .gameDesc {
@@ -130,6 +227,13 @@ console.log(`message`);
           cursor: pointer;
           outline: inherit;
         }
+        .hidethis{
+            display:none;
+        }
+        .datelink{
+            margin:0;
+            padding:0;
+        }
 
         </style>
         <link rel="manifest" href="./manifest.json">
@@ -152,24 +256,27 @@ console.log(`message`);
       <div style="margin:1rem">
         <div>
         <h2>Current Free Game</h2>
+            <h6>Starts From ${currentStartDate} -- Ends On ${currentEndDate}</h6>
           <div class="gameCards">
             ${currentCards}
           </div>
         </div>
         <div>
         <h2>Upcoming Free Game</h2>
+        <h6>Starts From ${nextStartDate} -- Ends On ${nextEndDate}</h6>
         <div class="gameCards">
           ${nextCards}   
         </div>
         </div>
 
       
-
+        
 
         
       </div>
       </body>
       <script src="offline.js"></script>
+      <script src="datecalc.js"></script>
       </html>`
     
 
