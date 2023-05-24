@@ -1,7 +1,47 @@
 let changedate = document.querySelectorAll(".datelink");
 let getdate = document.querySelector(".hidethis");
 
+let currStart = document.getElementById("currStart");
+let currEnd = document.getElementById("currEnd");
+let nextStart = document.getElementById("nextStart");
+let nextEnd = document.getElementById("nextEnd");
 
+
+let currentStartHead = document.getElementById("currentStartHead");
+let NextStartHead = document.getElementById("NextStartHead");
+
+// ----------------------------- Localize Date ----------------------
+currStart = currStart.innerHTML;
+currEnd = currEnd.innerHTML;
+nextStart = nextStart.innerHTML;
+nextEnd = nextEnd.innerHTML;
+
+currStart = new Date(currStart);
+currStart = currStart.toLocaleString();
+
+currEnd = new Date(currEnd);
+currEnd = currEnd.toLocaleString();
+
+nextStart = new Date(nextStart);
+nextStart = nextStart.toLocaleString();
+
+nextEnd = new Date(nextEnd);
+nextEnd = nextEnd.toLocaleString();
+
+
+currentStartHead.innerHTML = `Starts From ${currStart} -- Ends On ${currEnd}`;
+NextStartHead.innerHTML = `Starts From ${nextStart} -- Ends On ${nextEnd}`;
+
+
+
+
+
+
+
+
+
+
+//-----------------------------------------------Timer-------------------------
 
 setInterval(()=>{
     changedate.forEach(el=>{

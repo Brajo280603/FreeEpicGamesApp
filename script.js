@@ -80,10 +80,10 @@ gamesInfo.forEach(el=>{
 
 console.log(currents,nexts);
 
-let currentStartDate = currents[0].start_date.toLocaleString();
-let currentEndDate = currents[0].end_date.toLocaleString();
-let nextStartDate = nexts[0].start_date.toLocaleString();
-let nextEndDate = nexts[0].end_date.toLocaleString();
+let currentStartDate = currents[0].start_date.toISOString();
+let currentEndDate = currents[0].end_date.toISOString();
+let nextStartDate = nexts[0].start_date.toISOString();
+let nextEndDate = nexts[0].end_date.toISOString();
 
 createPage(currents,nexts,currentStartDate,currentEndDate,nextStartDate,nextEndDate);
 }
@@ -156,11 +156,8 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
     next.forEach(el => {
       // console.log(el);
 
-      let date = el.start_date.toISOString()
-
-        
     //   <a target="_blank" href="https://store.epicgames.com/en-US/p/${el.link}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-      
+      // <p class="hidethis">${date}</p>
       nextCards  += `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el.img}" alt="nextGame">
@@ -168,7 +165,7 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
           <h5 class="card-title text-light fw-bold gameTitle">${el.name}</h5>
           <p class="card-text text-light gameDesc">${el.desc}</p>
           <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
-          <p class="hidethis">${date}</p>
+          
         </div>
       </div>
     </div>`
@@ -256,14 +253,14 @@ console.log(`message`);
       <div style="margin:1rem">
         <div>
         <h2>Current Free Game</h2>
-            <h6>Starts From ${currentStartDate} -- Ends On ${currentEndDate}</h6>
+            <h6 id="currentStartHead">Starts From ${currentStartDate} -- Ends On ${currentEndDate}</h6>
           <div class="gameCards">
             ${currentCards}
           </div>
         </div>
         <div>
         <h2>Upcoming Free Game</h2>
-        <h6>Starts From ${nextStartDate} -- Ends On ${nextEndDate}</h6>
+        <h6 id="NextStartHead">Starts From ${nextStartDate} -- Ends On ${nextEndDate}</h6>
         <div class="gameCards">
           ${nextCards}   
         </div>
@@ -271,7 +268,10 @@ console.log(`message`);
 
       
         
-
+        <p class="hidethis" id="currStart">${currentStartDate}</p>
+        <p class="hidethis" id="currEnd">${currentEndDate}</p>
+        <p class="hidethis" id="nextStart">${nextStartDate}</p>
+        <p class="hidethis" id="nextEnd">${nextEndDate}</p>
         
       </div>
       </body>
