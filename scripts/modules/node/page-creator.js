@@ -121,7 +121,7 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       <body>
         <nav class="navbar bg-dark text-bg-dark ">
           <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="https://github.com/Brajo280603/FreeEpicGamesApp">
             <img src="./img/maskable_icon_x384.png" alt="Free Games" width="50" height="50">
             </a>
 
