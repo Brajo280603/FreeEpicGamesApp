@@ -1,15 +1,7 @@
 {
-  "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.3.0-alpha1",
-    "browserify": "^17.0.0",
-    "cors": "^2.8.5",
-    "epic-free-games": "^3.1.1",
-    "fetch": "^1.1.0"
-  },
   "name": "freeepicgamesapp",
   "version": "1.0.0",
-  "main": "bundle.js",
+  "main": "./scripts/node/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./scripts/node/script.js"
