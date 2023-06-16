@@ -1,5 +1,5 @@
 let changedate = document.querySelectorAll(".datelink");
-let getdate = document.querySelector(".hidethis");
+let getdate = document.getElementById("nextStart");
 
 let currStart = document.getElementById("currStart");
 let currEnd = document.getElementById("currEnd");
@@ -45,11 +45,11 @@ NextStartHead.innerHTML = `Starts From ${nextStart} -- Ends On ${nextEnd}`;
 
 setInterval(()=>{
     changedate.forEach(el=>{
-        let currdate = new Date();
+        
         let date = new Date(getdate.innerHTML);
         
         let diff = calculateTimeDifference(date);
-        console.log(diff)
+        // console.log(diff)
         let show = ""
         if(diff.days){
             show += diff.days+" days ";

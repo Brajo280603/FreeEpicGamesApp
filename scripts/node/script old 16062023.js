@@ -7,16 +7,21 @@ let nexts = [];
 
 getGames();
 
+let responseBackup = {};
 async function getGames(){
     let res = fetch("https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions")
     res = (await res).json();
     
     res = await res;
-    res.data.Catalog.searchStore.elements.forEach(el => {
-        gamesData.push(el);
+    
+    responseBackup = await res;
+    await res?.data?.Catalog?.searchStore?.elements?.forEach(el => {
+        if(el.promotions){
+          gamesData.push(el);
+        }
     })
 
-    // console.log(res);
+    console.log(gamesData);
     let gamesInfo = []
 
 // console.log(gamesData);
@@ -24,29 +29,32 @@ async function getGames(){
 gamesData.forEach(el => {
     let date;
     let isaval;
-    if(el.promotions.upcomingPromotionalOffers.length){
-        date = el.promotions.upcomingPromotionalOffers;
+    if(el?.promotions?.upcomingPromotionalOffers.length){
+        date = el?.promotions?.upcomingPromotionalOffers;
         isaval = false;
-    }else if(el.promotions.promotionalOffers.length){
-        date = el.promotions.promotionalOffers;
+    }else if(el?.promotions?.promotionalOffers.length){
+        date = el?.promotions?.promotionalOffers;
         isaval = true;
     }
-    date = date[0].promotionalOffers[0];
+
+    if(Array.isArray(date)){
+      date = date[0]?.promotionalOffers[0];
+    }
 
 
 
     let img;
-    el.keyImages.forEach(el => {
-        if(el.type == "Thumbnail"){
-            img = el.url;
+    el?.keyImages.forEach(el => {
+        if(el?.type == "Thumbnail"){
+            img = el?.url;
         }})
     console.log(img);
 
     
-    el.keyImages.forEach(el=>{
+    el?.keyImages?.forEach(el=>{
         if(!img){
-            if(el.type == "VaultClosed"){
-                img = el.url;
+            if(el?.type == "VaultClosed"){
+                img = el?.url;
             }
         }
     })
@@ -54,11 +62,11 @@ gamesData.forEach(el => {
 
     let game = {
 
-        "name":el.title,
-        "desc":el.description,
+        "name":el?.title,
+        "desc":el?.description,
         "link":el.productSlug?el.productSlug:"",
-        "start_date": new Date(date.startDate),
-        "end_date": new Date(date.endDate),
+        "start_date": new Date(date?.startDate),
+        "end_date": new Date(date?.endDate),
         "is_available": isaval,
         "img": img
     }
@@ -71,7 +79,7 @@ gamesData.forEach(el => {
 // console.log(gamesInfo);
 
 gamesInfo.forEach(el=>{
-    if(el.is_available){
+    if(el?.is_available){
         currents.push(el);
     }else{
         nexts.push(el)
@@ -80,10 +88,10 @@ gamesInfo.forEach(el=>{
 
 console.log(currents,nexts);
 
-let currentStartDate = currents[0].start_date.toISOString();
-let currentEndDate = currents[0].end_date.toISOString();
-let nextStartDate = nexts[0].start_date.toISOString();
-let nextEndDate = nexts[0].end_date.toISOString();
+let currentStartDate = currents[0]?.start_date.toISOString();
+let currentEndDate = currents[0]?.end_date.toISOString();
+let nextStartDate = nexts[0]?.start_date.toISOString();
+let nextEndDate = nexts[0]?.end_date.toISOString();
 
 createPage(currents,nexts,currentStartDate,currentEndDate,nextStartDate,nextEndDate);
 }
@@ -135,14 +143,14 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       currentCards  += 
       `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="${el.img}" alt="currentGame">
+        <img class="card-img-top gameImage" src="${el?.img}" alt="currentGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">${el.name}</h5>
-          <p class="card-text text-light gameDesc">${el.desc}</p>
+          <h5 class="card-title text-light fw-bold gameTitle">${el?.name}</h5>
+          <p class="card-text text-light gameDesc">${el?.desc}</p>
 
           
 
-          <a target="_blank" href="https://store.epicgames.com/en-US/p/${el.link}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
+          <a target="_blank" href="https://store.epicgames.com/en-US/p/${el?.link}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
         </div>
       </div>
     </div>`
@@ -160,10 +168,10 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       // <p class="hidethis">${date}</p>
       nextCards  += `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="${el.img}" alt="nextGame">
+        <img class="card-img-top gameImage" src="${el?.img}" alt="nextGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">${el.name}</h5>
-          <p class="card-text text-light gameDesc">${el.desc}</p>
+          <h5 class="card-title text-light fw-bold gameTitle">${el?.name}</h5>
+          <p class="card-text text-light gameDesc">${el?.desc}</p>
           <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
           
         </div>
@@ -275,8 +283,8 @@ console.log(`message`);
         
       </div>
       </body>
-      <script src="offline.js"></script>
-      <script src="datecalc.js"></script>
+      <script src="./scripts/client/offline.js"></script>
+      <script src="./scripts/modules/datecalc.js"></script>
       </html>`
     
 
