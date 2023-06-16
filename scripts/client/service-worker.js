@@ -1,5 +1,5 @@
 const CACHE_NAME = 'offline';
-const OFFLINE_URL = '/pages/offline.html';
+const OFFLINE_URL = './pages/offline.html';
 
 self.addEventListener('install', function(event) {
   console.log('[ServiceWorker] Install');
