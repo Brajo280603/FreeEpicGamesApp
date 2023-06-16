@@ -18,7 +18,7 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el?.img}" alt="currentGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">${el?.name}</h5>
+          <p class="card-title text-light fw-bold gameTitle">${el?.name}</p>
           <p class="card-text text-light gameDesc">${el?.desc}</p>
 
           
@@ -43,7 +43,7 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el?.img}" alt="nextGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <h5 class="card-title text-light fw-bold gameTitle">${el?.name}</h5>
+          <p class="card-title text-light fw-bold gameTitle">${el?.name}</p>
           <p class="card-text text-light gameDesc">${el?.desc}</p>
           <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
           
@@ -112,7 +112,18 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
             margin:0;
             padding:0;
         }
+        .currentStartHead{
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+        .nextStartHead{
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
 
+        .card-title{
+          font-size: 1.25rem;
+        }
         </style>
         <link rel="manifest" href="./manifest.json">
         <link rel="apple-touch-icon" href="img/apple_touch_icon.png">
@@ -134,14 +145,14 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       <div style="margin:1rem">
         <div>
         <h2>Current Free Game</h2>
-            <h6 id="currentStartHead">Starts From ${currentStartDate} -- Ends On ${currentEndDate}</h6>
+            <h3 id="currentStartHead">Starts From ${currentStartDate} -- Ends On ${currentEndDate}</h3>
           <div class="gameCards">
             ${currentCards}
           </div>
         </div>
         <div>
         <h2>Upcoming Free Game</h2>
-        <h6 id="NextStartHead">Starts From ${nextStartDate} -- Ends On ${nextEndDate}</h6>
+        <h3 id="NextStartHead">Starts From ${nextStartDate} -- Ends On ${nextEndDate}</h3>
         <div class="gameCards">
           ${nextCards}   
         </div>
