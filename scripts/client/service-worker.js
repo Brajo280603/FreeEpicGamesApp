@@ -1,5 +1,5 @@
 const CACHE_NAME = 'offline';
-const OFFLINE_URL = './pages/offline.html';
+const OFFLINE_URL = '/pages/offline.html';
 
 self.addEventListener('install', function(event) {
   console.log('[ServiceWorker] Install');
@@ -10,8 +10,8 @@ self.addEventListener('install', function(event) {
     // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
     await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
     // await cache.add(OFFLINE_URL)
-    await cache.add("./img/dino-nobg.png");
-    await cache.add("./img/maskable_icon_x384.png")
+    await cache.add("/img/dino-nobg.png");
+    await cache.add("/img/maskable_icon_x384.png")
   })());
   
   self.skipWaiting();
