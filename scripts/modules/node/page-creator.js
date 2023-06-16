@@ -6,10 +6,9 @@ let fileName = './index.html';
 function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,nextEndDate){
     let currentCards = '';
     let nextCards = '';
-    // console.log(current,next);
-    // console.log(` msg before current`);
+
     current.forEach(el => {
-      // console.log(el);
+      
 
    
       
@@ -33,12 +32,11 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       
 
     });
-  // console.log(` msg after current`);
+ 
     next.forEach(el => {
-      // console.log(el);
+     
 
-    //   <a target="_blank" href="https://store.epicgames.com/en-US/p/${el.link}" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-      // <p class="hidethis">${date}</p>
+  
       nextCards  += `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el?.img}" alt="nextGame">
@@ -52,7 +50,6 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
     </div>`
 
     });
-// console.log(`message`);
 
     let data = 
     `<!DOCTYPE html>
@@ -124,6 +121,16 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
         .card-title{
           font-size: 1.25rem;
         }
+
+        .navbar-epic-dark{
+          background-color:#2a2a2a!important;
+        }
+
+        .epic-dark{
+          background-color:rgb(28, 28, 28)!important;
+        }
+
+
         </style>
         <link rel="manifest" href="./manifest.json">
         <link rel="apple-touch-icon" href="img/apple_touch_icon.png">
@@ -174,14 +181,7 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
 
 
     fs.writeFile(fileName, data, (err) => {
-      if (err)
-        {
-          // console.log(err);
-        }
-      else {
-        // console.log(data);
-        // console.log("Page created successfully!\n");
-      }
+  
     });
 
 

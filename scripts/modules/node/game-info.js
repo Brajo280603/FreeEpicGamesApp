@@ -18,10 +18,10 @@ async function getGames(){
         }
     })
 
-    // console.log(gamesData);
+  
     let gamesInfo = []
 
-// console.log(gamesData);
+
 
 gamesData.forEach(el => {
     let date;
@@ -45,7 +45,7 @@ gamesData.forEach(el => {
         if(el?.type == "Thumbnail"){
             img = el?.url;
         }})
-    // console.log(img);
+   
 
     
     el?.keyImages?.forEach(el=>{
@@ -61,7 +61,7 @@ gamesData.forEach(el => {
 
         "name":el?.title,
         "desc":el?.description,
-        "link":el.productSlug?el.productSlug:"",
+        "link":el.productSlug?el.productSlug:el.offerMappings[0].pageSlug?el.offerMappings[0].pageSlug:"",
         "start_date": new Date(date?.startDate),
         "end_date": new Date(date?.endDate),
         "is_available": isaval,
@@ -73,7 +73,6 @@ gamesData.forEach(el => {
 
 })
 
-// console.log(gamesInfo);
 
 gamesInfo.forEach(el=>{
     if(el?.is_available){
@@ -83,7 +82,7 @@ gamesInfo.forEach(el=>{
     }
 })
 
-// console.log(currents,nexts);
+
 
 let currentStartDate = currents[0]?.start_date.toISOString();
 let currentEndDate = currents[0]?.end_date.toISOString();
