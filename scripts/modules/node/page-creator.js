@@ -113,7 +113,7 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
           font-size: 0.9rem;
           font-weight: 300;
         }
-        #nextStartHead{
+        #NextStartHead{
           font-size: 0.9rem;
           font-weight: 300;
         }
