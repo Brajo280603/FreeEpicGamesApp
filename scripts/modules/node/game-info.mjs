@@ -17,53 +17,21 @@ async function getGames () {
     }
   })
 
+  return parseGames(gamesData)
+}
+
+function parseGames (gamesData) {
   const gamesInfo = []
 
-  gamesData.forEach((el) => {
-    let date
-    let isaval
-    if (el?.promotions?.upcomingPromotionalOffers.length) {
-      date = el?.promotions?.upcomingPromotionalOffers
-      isaval = false
-    } else if (el?.promotions?.promotionalOffers.length) {
-      date = el?.promotions?.promotionalOffers
-      isaval = true
+  gamesData.forEach((game) => {
+    let gameInfo = {
+      data: '',
+      free: false
     }
-
-    if (Array.isArray(date)) {
-      date = date[0]?.promotionalOffers[0]
+    gameInfo = ifFree(game)
+    if (gameInfo.free) {
+      gamesInfo.push(gameInfo.data)
     }
-
-    let img
-    el?.keyImages.forEach((el) => {
-      if (el?.type === 'Thumbnail') {
-        img = el?.url
-      }
-    })
-
-    el?.keyImages?.forEach((el) => {
-      if (!img) {
-        if (el?.type === 'VaultClosed') {
-          img = el?.url
-        }
-      }
-    })
-
-    const game = {
-      name: el?.title,
-      desc: el?.description,
-      link: el.productSlug
-        ? el.productSlug
-        : el.offerMappings[0].pageSlug
-          ? el.offerMappings[0].pageSlug
-          : '',
-      start_date: new Date(date?.startDate),
-      end_date: new Date(date?.endDate),
-      is_available: isaval,
-      img
-    }
-
-    gamesInfo.push(game)
   })
 
   gamesInfo.forEach((el) => {
@@ -86,6 +54,59 @@ async function getGames () {
     currentEndDate,
     nextStartDate,
     nextEndDate
+  }
+}
+
+function ifFree (game) {
+  let date
+  let isaval
+  // if (game?.promotions?.upcomingPromotionalOffers.length) {
+  //   date = game?.promotions?.upcomingPromotionalOffers
+  //   isaval = false
+  // } else if (game?.promotions?.promotionalOffers.length) {
+  //   date = game?.promotions?.promotionalOffers
+  //   isaval = true
+  // }
+
+  if (game?.promotions?.upcomingPromotionalOffers[0]?.promotionalOffers[0]?.discountSetting?.discountPercentage === 0) {
+    date = game?.promotions?.upcomingPromotionalOffers
+    isaval = false
+  } else if (game?.promotions?.promotionalOffers.length && game?.price?.totalPrice?.discountPrice === 0) {
+    date = game?.promotions?.promotionalOffers
+    isaval = true
+  }
+
+  if (Array.isArray(date)) {
+    date = date[0]?.promotionalOffers[0]
+  }
+
+  let img
+  game?.keyImages.forEach((game) => {
+    if (game?.type === 'Thumbnail') {
+      img = game?.url
+    }
+  })
+
+  game?.keyImages?.forEach((game) => {
+    if (!img) {
+      if (game?.type === 'VaultClosed') {
+        img = game?.url
+      }
+    }
+  })
+
+  return {
+    name: game?.title,
+    desc: game?.description,
+    link: game?.productSlug
+      ? game?.productSlug
+      : game?.offerMappings[0]?.pageSlug
+        ? game?.offerMappings[0]?.pageSlug
+        : '',
+    start_date: new Date(date?.startDate),
+    end_date: new Date(date?.endDate),
+    is_available: isaval,
+    img
   }
 }
 

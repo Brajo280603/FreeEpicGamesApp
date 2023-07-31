@@ -59,7 +59,7 @@
           font-size: 0.9rem;
           font-weight: 300;
         }
-        #nextStartHead{
+        #NextStartHead{
           font-size: 0.9rem;
           font-weight: 300;
         }
@@ -89,7 +89,7 @@
             <img src="./img/maskable_icon_x384.png" alt="Free Games" width="50" height="50">
             </a>
 
-            <button id="downloadBtn" class="navbar-right removeBtnStyle" style="display: none;">
+            <button id="downloadBtn" class="navbar-right removeBtnStyle" onclick="triggerInstall()" style="display: none;">
               <img src="./img/download.png" alt="download" width="30" height="30" style="filter: invert(1);">
             </button>
             <!--<button onclick="notifyMe()">notification</button>-->
@@ -98,69 +98,25 @@
       <div style="margin:1rem">
         <div>
         <h2>Current Free Game</h2>
-            <h3 id="currentStartHead">Starts From 2023-06-15T15:00:00.000Z -- Ends On 2023-06-22T15:00:00.000Z</h3>
+            <h3 id="currentStartHead">Starts From undefined -- Ends On undefined</h3>
           <div class="gameCards">
-            <div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/spt-assets/7041a1ca4ed543459b95d78887047bd9/guacamelee-stce-18fca.jpg" alt="currentGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <p class="card-title text-light fw-bold gameTitle">Guacamelee! Super Turbo Championship Edition</p>
-          <p class="card-text text-light gameDesc">Guacamelee! is a Metroidvania-style action-platformer set in a magical Mexican-inspired world. The game draws its inspiration from traditional Mexican culture and folklore, and features many interesting and unique characters.</p>
-
-          
-
-          <a target="_blank" href="https://store.epicgames.com/en-US/p/guacamelee-stce-7cdbc8" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-        </div>
-      </div>
-    </div><div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/spt-assets/b05acd7d28d34f6d93a961b0e53ddf0b/guacamelee-2-qew88.jpg" alt="currentGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <p class="card-title text-light fw-bold gameTitle">Guacamelee! 2</p>
-          <p class="card-text text-light gameDesc">Head back to the Mexiverse in this long-awaited sequel to the smash hit Guacamelee! Uppercut your way to victory across stunning new hand-crafted levels. Featuring a dense and colorful world, new luchador moves, sassy new bosses, twice the enemies, and 300% more chickens!</p>
-
-          
-
-          <a target="_blank" href="https://store.epicgames.com/en-US/p/guacamelee-2-ac4977" class="btn btn-primary" style="margin-top: auto;">Open Page <img style="height:32px; width:32px;filter: invert(1);" src="./img/arrow-right.png" alt=""></a>
-        </div>
-      </div>
-    </div>
+            
           </div>
         </div>
         <div>
         <h2>Upcoming Free Game</h2>
-        <h3 id="NextStartHead">Starts From 2023-06-22T15:00:00.000Z -- Ends On 2023-06-29T15:00:00.000Z</h3>
+        <h3 id="NextStartHead">Starts From undefined -- Ends On undefined</h3>
         <div class="gameCards">
-          <div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/offer/7e508f543b05465abe3a935960eb70ac/IdleChampions_FreeGamesPromo_1200x16001_1200x1600-764258f78394b9f79815bbd9010e8454" alt="nextGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <p class="card-title text-light fw-bold gameTitle">Idle Champions of the Forgotten Realms</p>
-          <p class="card-text text-light gameDesc">Idle Champions is a licensed Dungeons & Dragons strategy management video game uniting iconic characters from novels, campaigns, and shows into one epic adventure.</p>
-          <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
-          
-        </div>
-      </div>
-    </div><div style="margin:1rem;padding: 1rem;" >
-      <div class="card bg-dark" style="width: 18rem;height:100%;">
-        <img class="card-img-top gameImage" src="https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_theHunterCalloftheWild_ExpansiveWorlds_S2_1200x1600-1e9b46aaabc33fe0a08cf5b418e76ba2" alt="nextGame">
-        <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
-          <p class="card-title text-light fw-bold gameTitle">theHunter: Call of the Wild™</p>
-          <p class="card-text text-light gameDesc">Experience an atmospheric hunting game like no other in this realistic and visually breathtaking open world. Immerse yourself in the atmospheric single player campaign, or share the ultimate hunting experience with friends.</p>
-          <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
-          
-        </div>
-      </div>
-    </div>   
+             
         </div>
         </div>
 
       
         
-        <p class="hidethis" id="currStart">2023-06-15T15:00:00.000Z</p>
-        <p class="hidethis" id="currEnd">2023-06-22T15:00:00.000Z</p>
-        <p class="hidethis" id="nextStart">2023-06-22T15:00:00.000Z</p>
-        <p class="hidethis" id="nextEnd">2023-06-29T15:00:00.000Z</p>
+        <p class="hidethis" id="currStart">undefined</p>
+        <p class="hidethis" id="currEnd">undefined</p>
+        <p class="hidethis" id="nextStart">undefined</p>
+        <p class="hidethis" id="nextEnd">undefined</p>
         
       </div>
       </body>
