@@ -1,4 +1,4 @@
-const { getGames } = require('./game-info.js')
+const { getGames } = require('./game-info.js').default
 const { createPage } = require('./page-creator.js')
 
 async function startPage () {
@@ -6,9 +6,16 @@ async function startPage () {
 
   console.log(res)
 
-  const data = createPage(res.currents, res.nexts, res.currentStartDate, res.currentEndDate, res.nextStartDate, res.nextEndDate)
+  const data = createPage(
+    res.currents,
+    res.nexts,
+    res.currentStartDate,
+    res.currentEndDate,
+    res.nextStartDate,
+    res.nextEndDate
+  )
 
   console.log(data)
 }
 
-module.exports = { startPage }
+export default { startPage }

@@ -1,3 +1,3 @@
-const { startPage } = require('../modules/node/manager.js')
+import { startPage } from '../modules/node/manager.js'
 
 startPage()

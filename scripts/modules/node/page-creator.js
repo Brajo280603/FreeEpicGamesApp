@@ -170,4 +170,4 @@ function createPage (current, next, currentStartDate, currentEndDate, nextStartD
   return data
 }
 
-module.exports = { createPage }
+export default { createPage }

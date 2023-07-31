@@ -5,11 +5,13 @@ const currents = []
 const nexts = []
 
 async function getGames () {
-  let res = fetch('https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions')
+  let res = fetch(
+    'https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions'
+  )
   res = (await res).json()
   res = await res
   // responseBackup = await res;
-  await res?.data?.Catalog?.searchStore?.elements?.forEach(el => {
+  await res?.data?.Catalog?.searchStore?.elements?.forEach((el) => {
     if (el.promotions) {
       gamesData.push(el)
     }
@@ -17,7 +19,7 @@ async function getGames () {
 
   const gamesInfo = []
 
-  gamesData.forEach(el => {
+  gamesData.forEach((el) => {
     let date
     let isaval
     if (el?.promotions?.upcomingPromotionalOffers.length) {
@@ -33,13 +35,13 @@ async function getGames () {
     }
 
     let img
-    el?.keyImages.forEach(el => {
+    el?.keyImages.forEach((el) => {
       if (el?.type === 'Thumbnail') {
         img = el?.url
       }
     })
 
-    el?.keyImages?.forEach(el => {
+    el?.keyImages?.forEach((el) => {
       if (!img) {
         if (el?.type === 'VaultClosed') {
           img = el?.url
@@ -48,10 +50,13 @@ async function getGames () {
     })
 
     const game = {
-
       name: el?.title,
       desc: el?.description,
-      link: el.productSlug ? el.productSlug : el.offerMappings[0].pageSlug ? el.offerMappings[0].pageSlug : '',
+      link: el.productSlug
+        ? el.productSlug
+        : el.offerMappings[0].pageSlug
+          ? el.offerMappings[0].pageSlug
+          : '',
       start_date: new Date(date?.startDate),
       end_date: new Date(date?.endDate),
       is_available: isaval,
@@ -61,7 +66,7 @@ async function getGames () {
     gamesInfo.push(game)
   })
 
-  gamesInfo.forEach(el => {
+  gamesInfo.forEach((el) => {
     if (el?.is_available) {
       currents.push(el)
     } else {
@@ -74,7 +79,14 @@ async function getGames () {
   const nextStartDate = nexts[0]?.start_date.toISOString()
   const nextEndDate = nexts[0]?.end_date.toISOString()
 
-  return { currents, nexts, currentStartDate, currentEndDate, nextStartDate, nextEndDate }
+  return {
+    currents,
+    nexts,
+    currentStartDate,
+    currentEndDate,
+    nextStartDate,
+    nextEndDate
+  }
 }
 
-module.exports = { getGames }
+export default { getGames }
