@@ -1,18 +1,12 @@
-const fs = require('fs');
-let fileName = './index.html';
+const fs = require('fs')
+const fileName = './index.html'
 
+function createPage (current, next, currentStartDate, currentEndDate, nextStartDate, nextEndDate) {
+  let currentCards = ''
+  let nextCards = ''
 
-
-function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,nextEndDate){
-    let currentCards = '';
-    let nextCards = '';
-
-    current.forEach(el => {
-      
-
-   
-      
-      currentCards  += 
+  current.forEach(el => {
+    currentCards +=
       `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el?.img}" alt="currentGame">
@@ -26,18 +20,10 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
         </div>
       </div>
     </div>`
+  })
 
-
-
-      
-
-    });
- 
-    next.forEach(el => {
-     
-
-  
-      nextCards  += `<div style="margin:1rem;padding: 1rem;" >
+  next.forEach(el => {
+    nextCards += `<div style="margin:1rem;padding: 1rem;" >
       <div class="card bg-dark" style="width: 18rem;height:100%;">
         <img class="card-img-top gameImage" src="${el?.img}" alt="nextGame">
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
@@ -48,10 +34,9 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
         </div>
       </div>
     </div>`
+  })
 
-    });
-
-    let data = 
+  const data =
     `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -177,18 +162,12 @@ function createPage (current,next,currentStartDate,currentEndDate,nextStartDate,
       <script src="./scripts/client/offline.js"></script>
       <script src="./scripts/modules/client/datecalc.js"></script>
       </html>`
-    
 
+  fs.writeFile(fileName, data, (err) => {
+    console.error(err)
+  })
 
-    fs.writeFile(fileName, data, (err) => {
-  
-    });
-
-
-    return data
-   
-
+  return data
 }
 
-
-module.exports = {createPage}
+module.exports = { createPage }

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./scripts/node/script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx standard \"scripts/**/*.js\" ",
     "build": "node ./scripts/node/script.js"
   },
   "repository": {
@@ -17,5 +17,8 @@
     "url": "https://github.com/Brajo280603/FreeEpicGamesApp/issues"
   },
   "homepage": "https://github.com/Brajo280603/FreeEpicGamesApp#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  }
 }

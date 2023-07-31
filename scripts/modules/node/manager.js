@@ -1,15 +1,14 @@
-const {getGames} = require('./game-info.js')
-const {createPage} = require('./page-creator.js')
+const { getGames } = require('./game-info.js')
+const { createPage } = require('./page-creator.js')
 
-async function startPage() {
-    let res = await getGames();
+async function startPage () {
+  const res = await getGames()
 
-    console.log(res);
+  console.log(res)
 
+  const data = createPage(res.currents, res.nexts, res.currentStartDate, res.currentEndDate, res.nextStartDate, res.nextEndDate)
 
-    let data = createPage(res.currents,res.nexts,res.currentStartDate,res.currentEndDate,res.nextStartDate,res.nextEndDate);
-
-    console.log(data);
+  console.log(data)
 }
 
-module.exports = {startPage};
+module.exports = { startPage }
