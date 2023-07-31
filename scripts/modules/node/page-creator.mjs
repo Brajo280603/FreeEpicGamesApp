@@ -1,4 +1,5 @@
-const fs = require('fs')
+// const fs = require('fs')
+import * as fs from 'fs'
 const fileName = './index.html'
 
 function createPage (current, next, currentStartDate, currentEndDate, nextStartDate, nextEndDate) {
@@ -170,4 +171,4 @@ function createPage (current, next, currentStartDate, currentEndDate, nextStartD
   return data
 }
 
-export default { createPage }
+export { createPage }

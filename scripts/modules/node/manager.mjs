@@ -1,5 +1,5 @@
-const { getGames } = require('./game-info.js').default
-const { createPage } = require('./page-creator.js')
+import { getGames } from './game-info.mjs'
+import { createPage } from './page-creator.mjs'
 
 async function startPage () {
   const res = await getGames()
@@ -18,4 +18,4 @@ async function startPage () {
   console.log(data)
 }
 
-export default { startPage }
+export { startPage }

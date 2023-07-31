@@ -89,4 +89,4 @@ async function getGames () {
   }
 }
 
-export default { getGames }
+export { getGames }

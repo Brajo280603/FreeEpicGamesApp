@@ -1,10 +1,10 @@
 {
   "name": "freeepicgamesapp",
   "version": "1.0.0",
-  "main": "./scripts/node/script.js",
+  "main": "./scripts/node/script.mjs",
   "scripts": {
-    "test": "npx standard \"scripts/**/*.js\" ",
-    "build": "node ./scripts/node/script.js"
+    "test": "npx standard \"scripts/**/*.mjs\" ",
+    "build": "node ./scripts/node/script.mjs"
   },
   "repository": {
     "type": "git",
