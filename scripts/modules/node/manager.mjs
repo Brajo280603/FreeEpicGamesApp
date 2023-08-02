@@ -19,4 +19,3 @@ async function startPage () {
 }
 
 export { startPage }
-startPage()
