@@ -30,7 +30,8 @@ function createPage (current, next, currentStartDate, currentEndDate, nextStartD
         <div class="card-body" style="display: flex; flex-direction: column; height: 100%;">
           <p class="card-title text-light fw-bold gameTitle">${el?.name}</p>
           <p class="card-text text-light gameDesc">${el?.desc}</p>
-          <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
+          <!--<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>-->
+          <a target="_blank" href="${el.link?`https://store.epicgames.com/en-US/p/${el?.link}`: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}" class="btn btn-primary" style="margin-top: auto;"><p class="datelink"></p></a>
           
         </div>
       </div>

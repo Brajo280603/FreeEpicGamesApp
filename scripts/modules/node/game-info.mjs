@@ -16,7 +16,7 @@ async function getGames () {
       gamesData.push(el)
     }
   })
-
+  
   return parseGames(gamesData)
 }
 
@@ -33,6 +33,7 @@ function parseGames (gamesData) {
       gamesInfo.push(gameInfo.data)
     }
   })
+
 
   gamesInfo.forEach((el) => {
     if (el?.is_available) {
@@ -60,6 +61,7 @@ function parseGames (gamesData) {
 function ifFree (game) {
   let date
   let isaval
+  let free = false
   // if (game?.promotions?.upcomingPromotionalOffers.length) {
   //   date = game?.promotions?.upcomingPromotionalOffers
   //   isaval = false
@@ -67,13 +69,16 @@ function ifFree (game) {
   //   date = game?.promotions?.promotionalOffers
   //   isaval = true
   // }
+  
 
   if (game?.promotions?.upcomingPromotionalOffers[0]?.promotionalOffers[0]?.discountSetting?.discountPercentage === 0) {
     date = game?.promotions?.upcomingPromotionalOffers
     isaval = false
+    free = true
   } else if (game?.promotions?.promotionalOffers.length && game?.price?.totalPrice?.discountPrice === 0) {
     date = game?.promotions?.promotionalOffers
     isaval = true
+    free = true
   }
 
   if (Array.isArray(date)) {
@@ -96,17 +101,20 @@ function ifFree (game) {
   })
 
   return {
-    name: game?.title,
-    desc: game?.description,
-    link: game?.productSlug
-      ? game?.productSlug
-      : game?.offerMappings[0]?.pageSlug
-        ? game?.offerMappings[0]?.pageSlug
-        : '',
-    start_date: new Date(date?.startDate),
-    end_date: new Date(date?.endDate),
-    is_available: isaval,
-    img
+    data:{
+      name: game?.title,
+      desc: game?.description,
+      link: game?.productSlug
+        ? game?.productSlug
+        : game?.offerMappings[0]?.pageSlug
+          ? game?.offerMappings[0]?.pageSlug
+          : '',
+      start_date: new Date(date?.startDate),
+      end_date: new Date(date?.endDate),
+      is_available: isaval,
+      img,
+    },
+    free
   }
 }
 
