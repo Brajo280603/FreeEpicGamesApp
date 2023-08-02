@@ -55,7 +55,10 @@ jobs:
           # Upload entire repository
         path: '.'
     - run: cat ./index.html
-    - name: Deploy to GitHub Pages
-      id: deployment
+    - name: OLD Deploy to GitHub Pages
       uses: actions/deploy-pages@v1
+    - name: Deploy GitHub Pages site
+      id: deployment
+      uses: actions/deploy-pages@v2.0.3
+
 
